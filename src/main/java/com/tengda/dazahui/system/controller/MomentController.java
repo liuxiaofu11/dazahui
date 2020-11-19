@@ -37,7 +37,5 @@ public class MomentController {
         List<User> userList = momentService.shuju();
         return userList;
     }
-
-
-    //增加一个方法测试提交是否成功
+    //增加一个法方测试提交是否成功
 }

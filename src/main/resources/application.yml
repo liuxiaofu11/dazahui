@@ -5,15 +5,22 @@ spring:
     druid:
       db-type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://139.224.115.130:3306/ceshi?useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://139.224.115.130:3306/dde?useUnicode=true&characterEncoding=utf8
       username: root
       password: root
       min-idle: 5
       max-active: 20
       max-wait: 30000
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: localhost:9300
+
 mybatis:
   type-aliases-package: com.tengda.dazahui.system.domian
   mapper-locations: classpath:mapper/*/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
 

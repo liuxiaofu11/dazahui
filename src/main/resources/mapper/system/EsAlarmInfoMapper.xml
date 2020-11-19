@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tengda.dazahui.system.dao.EsAlarmInfoMapper">
+
+
+    <select id="findAlarmInfo" resultType="com.tengda.dazahui.system.domian.AlarmRecord">
+        SELECT
+        R.id id,
+        R.alarm_type_id ararmTypeId,
+        R.start_time startTime,
+        R.end_time endTime,
+        R.alarm_source alarmSource,
+        R.vehicle_id vehicleId,
+        R.gps_lng gpsLng,
+        R.uuid uuid,
+        R.gps_lat gpsLat,
+        R.gps_status gpsStatus,
+        R.altitude altitude,
+        R.speed speed,
+        R.angle angle,
+        R.end_gps_lng endGpsLng,
+        R.end_gps_lat endGpsLat,
+        R.end_gps_status endGpsStatus,
+        R.end_altitude endAltitude,
+        R.end_speed endSpeed,
+        R.end_angle endAngle,
+        R.alarm_desc alarmDesc,
+        R.alarm_grade alarmGrade,
+        R.handle_people handlePeople,
+        R.handle_time handleTime,
+        R.handle_method handleMethod,
+        R.handle_desc handleDesc,
+        AE.url urlPath
+        FROM DDE.TB_ALARM_RECORD R LEFT JOIN DDE.TB_ALARM_EXTEND AE ON R.UUID = AE.UUID
+        <!--        <where>-->
+        <!--            R.ALARM_TYPE_ID-->
+        <!--            IN(170,171,172,173,174,175,176,177,185,186,190,191,192,193,194,195,196,198,205,206,207,220,425,427,400,401,402,403,450,451,452)-->
+        <!--        </where>-->
+    </select>
+
+
+</mapper>
