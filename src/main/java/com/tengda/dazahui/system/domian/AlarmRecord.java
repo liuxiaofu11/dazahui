@@ -52,4 +52,36 @@ public class AlarmRecord implements Serializable {
 
     private String urlPath;
 
+
+    public AlarmRecord() {
+    }
+
+    public AlarmRecord(Long id, Integer ararmTypeId, Integer startTime, Integer endTime, Integer alarmSource, Integer vehicleId, Integer gpsLng, String uuid, Integer gpsLat, Integer gpsStatus, Integer altitude, Integer speed, Integer angle, Integer endGpsLng, Integer endGpsLat, Integer endGpsStatus, Integer endAltitude, Integer endSpeed, Integer endAngle, String alarmDesc, Integer alarmGrade, Integer handlePeople, Integer handleTime, Integer handleMethod, String handleDesc, String urlPath) {
+        this.id = id;
+        this.ararmTypeId = ararmTypeId;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.alarmSource = alarmSource;
+        this.vehicleId = vehicleId;
+        this.gpsLng = gpsLng;
+        this.uuid = uuid;
+        this.gpsLat = gpsLat;
+        this.gpsStatus = gpsStatus;
+        this.altitude = altitude;
+        this.speed = speed;
+        this.angle = angle;
+        this.endGpsLng = endGpsLng;
+        this.endGpsLat = endGpsLat;
+        this.endGpsStatus = endGpsStatus;
+        this.endAltitude = endAltitude;
+        this.endSpeed = endSpeed;
+        this.endAngle = endAngle;
+        this.alarmDesc = alarmDesc;
+        this.alarmGrade = alarmGrade;
+        this.handlePeople = handlePeople;
+        this.handleTime = handleTime;
+        this.handleMethod = handleMethod;
+        this.handleDesc = handleDesc;
+        this.urlPath = urlPath;
+    }
 }
