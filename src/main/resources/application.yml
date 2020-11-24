@@ -5,7 +5,7 @@ spring:
     druid:
       db-type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://139.224.115.130:3306/dde?useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://139.224.115.130:3306/dde?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
       username: root
       password: root
       min-idle: 5
