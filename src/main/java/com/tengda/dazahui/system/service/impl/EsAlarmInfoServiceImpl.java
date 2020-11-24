@@ -7,7 +7,13 @@ import com.tengda.dazahui.system.repository.EsProductRepository;
 import com.tengda.dazahui.system.service.EsAlarmInfoService;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.TermsQueryBuilder;
 import org.elasticsearch.index.query.WildcardQueryBuilder;
+import org.elasticsearch.search.aggregations.Aggregation;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.Aggregations;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
+import org.elasticsearch.search.aggregations.metrics.valuecount.ValueCountAggregationBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +68,16 @@ public class EsAlarmInfoServiceImpl implements EsAlarmInfoService {
         nativeSearchQueryBuilder.withPageable(pageable);
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
         //条件查询
+        List<String> List = new ArrayList<>();
+        List.add("1");
+        List.add("2");
+        List.add("5");
+        List.add("7");
+        if (List == null || List.size() <= 0) {
+            return null;
+        }
+        //代表sql中in查询的方法 termsQuery  terms 代表一个字段多个值
+        boolQueryBuilder.must(QueryBuilders.termsQuery("vehicleId", List));
         if (alarmTypeId != -1) {
             //must与fileter的区别在于fileter不用计算分值,fileter赛选过滤数据以后,这个过程会缓存查询的过程,然后排除不符合条件的数据
             //boolQueryBuilder.must(QueryBuilders.termQuery("ararmTypeId", alarmTypeId));
@@ -97,20 +113,11 @@ public class EsAlarmInfoServiceImpl implements EsAlarmInfoService {
             boolQueryBuilder.should(queryBuilder);
             boolQueryBuilder.should(queryBuilder1);
         }
-//        List<Integer> List = new ArrayList<>();
-//        List.add(1);
-//        List.add(2);
-//        Object[] objects = List.toArray();
-//        Integer[] strings = List.toArray(new Integer[List.size()]);
-//        boolQueryBuilder.must(QueryBuilders.termQuery("vehicleId",List));
 
         nativeSearchQueryBuilder.withQuery(boolQueryBuilder);
-        //nativeSearchQueryBuilder
         //按某个字段排序
         nativeSearchQueryBuilder.withSort(SortBuilders.fieldSort("startTime").order(SortOrder.DESC)); //按照某个字段排序
-
         NativeSearchQuery searchQuery = nativeSearchQueryBuilder.build();
-        //SearchHits<AlarmRecord> query = elasticsearchTemplate.query(searchQuery, AlarmRecord.class);
         AggregatedPage<AlarmRecord> alarmRecords = elasticsearchTemplate.queryForPage(searchQuery, AlarmRecord.class);
         if (alarmRecords.getSize() <= 0) {
             return new PageImpl<>(null, pageable, 0);
