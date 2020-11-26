@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * @Author teswell
  * @Date 2020/11/18 14:50
@@ -37,6 +39,7 @@ public class EsAlarmInfoController {
 
     /**
      * 简单查询
+     *
      * @param vehicle
      * @param statTime
      * @param endTime
@@ -56,6 +59,7 @@ public class EsAlarmInfoController {
 
     /**
      * 聚合数据查询
+     *
      * @param vehicle
      * @param statTime
      * @param endTime
@@ -66,7 +70,14 @@ public class EsAlarmInfoController {
     @RequestMapping("/searchCount")
     @ResponseBody
     public CommonResult<CommonPage<AlarmRecord>> searchCount(Integer vehicle, String statTime, String endTime, Integer pageNum, Integer pageSize) {
-        Page<AlarmRecord> alarmRecordCounts = esAlarmInfoService.searchCount(vehicle,statTime,endTime,pageNum,pageSize);
+        Page<AlarmRecord> alarmRecordCounts = esAlarmInfoService.searchCount(vehicle, statTime, endTime, pageNum, pageSize);
         return CommonResult.success(CommonPage.restPage(alarmRecordCounts));
+    }
+
+    @RequestMapping("/esapi")
+    @ResponseBody
+    public List<String> ceshi() {
+        List<String> aa = esAlarmInfoService.ceshi();
+        return aa;
     }
 }

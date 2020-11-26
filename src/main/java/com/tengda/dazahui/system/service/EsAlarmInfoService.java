@@ -4,6 +4,8 @@ import com.tengda.dazahui.system.domian.AlarmRecord;
 import com.tengda.dazahui.system.domian.AlarmRecordCount;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 public interface EsAlarmInfoService {
     /**
      * 从数据库中导入所有报警信息到ES
@@ -25,4 +27,5 @@ public interface EsAlarmInfoService {
 
     Page<AlarmRecord> searchCount(Integer vehicle, String statTime, String endTime, Integer pageNum, Integer pageSize);
 
+    List<String> ceshi();
 }

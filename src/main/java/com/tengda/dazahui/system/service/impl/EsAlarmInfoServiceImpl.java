@@ -166,4 +166,18 @@ public class EsAlarmInfoServiceImpl implements EsAlarmInfoService {
         return new PageImpl<>(content, pageable, alarmRecordCounts.getTotalElements());
     }
 
+    @Override
+    public List<String> ceshi() {
+        BoolQueryBuilder queryBuilders = QueryBuilders.boolQuery();
+        queryBuilders.filter(QueryBuilders.termQuery("ararmTypeId", 190));
+        Iterable<AlarmRecord> search = esProductRepository.search(queryBuilders);
+        Iterator<AlarmRecord> iterator = search.iterator();
+        List<String> List = new ArrayList<>();
+        while (iterator.hasNext()) {
+            Integer ararmTypeId = iterator.next().getArarmTypeId();
+            List.add(String.valueOf(ararmTypeId));
+        }
+        return List;
+    }
+
 }
