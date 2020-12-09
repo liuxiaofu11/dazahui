@@ -15,7 +15,14 @@ spring:
     elasticsearch:
       cluster-name: elasticsearch
       cluster-nodes: localhost:9300
-
+    mongodb:
+      uri: mongodb://localhost:27017/mongodb
+  thymeleaf:
+    cache: false
+  aop:
+    proxy-target-class: true
+  cache:
+    type: redis
 mybatis:
   type-aliases-package: com.tengda.dazahui.system.domian
   mapper-locations: classpath:mapper/*/*.xml
