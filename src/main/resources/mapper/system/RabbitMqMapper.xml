@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tengda.dazahui.system.dao.RabbitMqMapper">
+    <resultMap id="rabbitmq" type="com.tengda.dazahui.system.domian.Order">
+        <result property="id" column="id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="totalAmount" column="total_amount"/>
+        <result property="payType" column="pay_type"/>
+        <result property="status" column="status"/>
+    </resultMap>
+    <insert id="orderSave" parameterType="com.tengda.dazahui.system.domian.Order"
+            keyProperty="order.id" keyColumn="id" useGeneratedKeys="true">
+     INSERT INTO tb_order(order_sn,create_time,total_amount,pay_type,status) values
+     (#{order.orderSn},#{order.createTime},#{order.totalAmount},#{order.payType},#{order.status})
+    </insert>
+    <update id="cancelOrder">
+        update tb_order set  status = 4  where  id = #{orderId}
+    </update>
+
+    <select id="findByOrderId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+        select count(1) from tb_order
+        <where>
+            <if test="orderId != 0">
+                id= #{orderId}
+            </if>
+            and pay_type=0 and status = 0
+        </where>
+    </select>
+
+</mapper>

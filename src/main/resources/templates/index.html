@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<script src="../js/jquery.min.js"></script>
+<body>
+<button type="button" onclick="test()">提交</button>
+</body>
+<script>
+    function test() {
+        var adata = {
+            "id": 1,
+            "name": "老王"
+        };
+        var data = JSON.stringify(adata);
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: data,
+            async: false,
+            url: "test",
+            success: function (data) {
+                if (data.code === 0) {
+                    alert("成功")
+                    window.location.href = "success";
+                }
+            },
+            error: function (e) {
+                console.log(e)
+            }
+        });
+    };
+</script>
+</html>
