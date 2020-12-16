@@ -1,7 +1,5 @@
 server:
   port: 1111
-  servlet:
-    context-path: /
 spring:
   datasource:
     druid:

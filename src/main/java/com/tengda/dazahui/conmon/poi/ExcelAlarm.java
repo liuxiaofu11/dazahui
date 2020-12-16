@@ -10,11 +10,11 @@ import java.util.*;
 
 /**
  * @Author teswell
- * @Date 2020/12/11 16:34
+ * @Date 2020/12/14 15:55
  * @function
- * 根据模板的要求直接导出excel
  */
-public class Excel {
+public class ExcelAlarm {
+
     private HSSFWorkbook workbook;
     private HSSFSheet sheet;
     private String bDate;
@@ -116,7 +116,7 @@ public class Excel {
         year = Integer.parseInt(bDate.substring(0,4));
         String month = bDate.substring(4,6);
         int m = Integer.parseInt(month)-1;
-        Calendar   cal   =   Calendar.getInstance();
+        Calendar cal   =   Calendar.getInstance();
         cal.set(Calendar.YEAR,year);
         cal.set(Calendar.MONTH,m);//从0开始 0代表一月 11代表12月
         int   maxDate   =   cal.getActualMaximum(Calendar.DATE);
@@ -301,6 +301,4 @@ public class Excel {
         out.flush();
         out.close();
     }
-
-
 }
