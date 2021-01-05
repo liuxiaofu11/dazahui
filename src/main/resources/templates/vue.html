@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:b-on="http://www.w3.org/1999/xhtml" xmlns:v-runoob="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>菜鸟实例</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+</head>
+<style>
+    .class1 {
+        background: #444444;
+        color: #eeeeee;
+    }
+</style>
+<style>
+    .base {
+        width: 100px;
+        height: 100px;
+    }
+
+    .active {
+        background: green;
+    }
+
+    .text-danger {
+        background: red;
+    }
+</style>
+<style>
+    .fade-enter-active, .fade-enter-active {
+        transition: opacity 2s;
+    }
+
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+</style>
+<body>
+<!--<div id="app">-->
+<!--    <p>{{message}}</p>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        data:{-->
+<!--            message:'hello vue.js!'-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="vue_det">-->
+<!--    <h1>site : {{site}}</h1>-->
+<!--    <h2> url : {{url}}</h2>-->
+<!--    <h3> {{details()}}</h3>-->
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--    var vm = new Vue({-->
+<!--        el: '#vue_det',-->
+<!--        data: {-->
+<!--            site: "菜鸟教程",-->
+<!--            url: "www.runoob.com",-->
+<!--            alexa: "10000"-->
+<!--        },-->
+<!--        methods: {-->
+<!--            details: function () {-->
+<!--                return this.site + " - 学的不仅是技术,更是梦想!";-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="vue_det">-->
+<!--    <h1>site: {{site}}</h1>-->
+<!--    <h2>url: {{url}}</h2>-->
+<!--    <h3> alexa: {{alexa}}</h3>-->
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--    //我们的数据对象-->
+<!--    var data = {site:"菜鸟教程",url:"www.runoob.com",alexa:10000}-->
+<!--    var vm = new Vue({-->
+<!--        el:"#vue_det",-->
+<!--        data:data-->
+<!--    })-->
+<!--    //他们引用相同的对象-->
+<!--    document.write(vm.site === data.site)-->
+<!--    document.write("<br>")-->
+<!--    //设置属性也会影响原始数据-->
+<!--    vm.site = "Runoob"-->
+<!--    document.write(data.site + "<br>")-->
+
+<!--    //返之怡然-->
+<!--    data.alexa = 1234-->
+<!--    document.write(vm.alert())-->
+<!--    document.write(wm.$el === document.getElementById("vue_det"))-->
+
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    <div v-html="message"></div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: "#app",-->
+<!--        data: {-->
+<!--            message: '<h1>菜鸟教程</h1>'-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    <label for="r1">修改颜色</label>-->
+<!--    <input type="checkbox" v-model="use" id="r1">-->
+<!--    <br><br>-->
+<!--    <div v-bind:class="{'class1':use}">-->
+<!--        v-bind:class 指令-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:"#app",-->
+<!--        data:{-->
+<!--            use:false-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    {{5+5}} <br>-->
+<!--    {{ok ? 'YES' : 'NO'}} <br>-->
+<!--    {{message.split('').reverse().join('')}}-->
+<!--    <div v-bind:id="'list-' + id">菜鸟教程</div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            ok: true,-->
+<!--            message: 'RUNOOB',-->
+<!--            id: 1-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <p v-if="seen">现在你看到我了</p>-->
+<!--    <template v-if="ok">-->
+<!--        <h1>菜鸟教程</h1>-->
+<!--        <p>学的不仅是技术,更是梦想</p>-->
+<!--        <p>哈哈哈,打字辛苦啊</p>-->
+<!--    </template>-->
+<!--</div>-->
+<!--<button id="aa" type="button"></button>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: "#app",-->
+<!--        data: {-->
+<!--            seen: false,-->
+<!--            ok: true-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    <pre><a v-bind:href="url">菜鸟教程</a></pre>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            url: 'http://www.runoob.com'-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <p>{{message}}</p>-->
+<!--    <input v-model="message">-->
+
+<!--</div>-->
+
+<!--<script>-->
+<!--     new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            message: 'runoob!',-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    <p>{{message}}</p>-->
+<!--    <button v-on:click="reverseMessage">反转字符窜</button>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--      el: '#app',-->
+<!--      data: {-->
+<!--          message:'runoob!',-->
+<!--      },-->
+<!--        methods:{-->
+<!--          reverseMessage: function () {-->
+<!--              this.message = this.message.split('').reverse().join('')-->
+<!--          }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    {{message | capitalize}}-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            message: 'runoob'-->
+<!--        },-->
+<!--        filters: {-->
+<!--            capitalize: function (value) {-->
+<!--                if (!value) return ''-->
+<!--                value = value.toString()-->
+<!--                return value.charAt(0).toUpperCase() + value.slice(1)-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <div v-if="Math.random() >0.5">-->
+<!--        Sorry-->
+<!--    </div>-->
+<!--    <div v-else>-->
+<!--        not sorry-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--      el: '#app'-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <h1 v-show="ok">Hello!</h1>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--      el: '#app',-->
+<!--      data: {-->
+<!--        ok:true,-->
+<!--      }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <ol>-->
+<!--        <li v-for="site in sites" >-->
+<!--            {{site.name}}-->
+<!--        </li>-->
+<!--    </ol>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--      el: '#app',-->
+<!--      data: {-->
+<!--        sites:[-->
+<!--            {name:'大秦赋'},-->
+<!--            {name:'裂变'},-->
+<!--            {name:'纵横天下'}-->
+<!--        ]-->
+<!--      }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    <ul>-->
+<!--        <li v-for="value in object">-->
+<!--            {{value}}-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        data:{-->
+<!--            object:{-->
+<!--                name:'菜鸟教程',-->
+<!--                url:'<a href="http://www.runoob.com">dainji</a>',-->
+<!--                slogan:'学的不仅是技术,更是梦想!'-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <ul>-->
+<!--        <li v-for="(value,key) in object">-->
+<!--            {{key}}  : {{value}}-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        data:{-->
+<!--            object:{-->
+<!--                name:'菜鸟教程',-->
+<!--                url:'http://www.runoob.com',-->
+<!--                slogan:'学的不仅是技术,更是梦想!'-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id = "app">-->
+<!--    <p style = "font-size:25px;">计数器: {{ counter }}</p>-->
+<!--    <button @click = "counter++" style = "font-size:25px;">点我</button>-->
+<!--</div>-->
+<!--<script type = "text/javascript">-->
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            counter: 1-->
+<!--        }-->
+<!--    });-->
+<!--    vm.$watch('counter', function(nval, oval) {-->
+<!--        alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');-->
+<!--    });-->
+<!--</script>-->
+
+
+<!--<div id="computed_props">-->
+<!--    千米 : <input type="text" v-model="kilometers">-->
+<!--    米: <input type="text" v-model="meters">-->
+<!--</div>-->
+<!--<p id="info"></p>-->
+<!--<script type="text/javascript">-->
+<!--    var vm = new Vue({-->
+<!--        el: '#computed_props',-->
+<!--        data: {-->
+<!--            kilometers: 0,-->
+<!--            meters: 0-->
+<!--        },-->
+<!--        methods: {},-->
+<!--        computed: {},-->
+<!--        watch: {-->
+<!--            kilometers: function (val) {-->
+<!--                this.kilometers = val;-->
+<!--                this.meters = this.kilometers * 1000-->
+<!--            },-->
+<!--            meters: function (val) {-->
+<!--                this.kilometers = val / 1000;-->
+<!--                this.meters = val;-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--    //    $watch是一个实例方法-->
+<!--    vm.$watch('kilometers', function (newValue, oldValue) {-->
+<!--        //这个回调将在vm.kilometers改变后调用-->
+<!--        document.getElementById ("info").innerHTML = "修改前值为: " + oldValue + "，修改后值为: " + newValue;-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <div v-bind:class="{'active' : isActive,'text-danger': hasError }"></div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            isActive: true,-->
+<!--            hasError: true-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    <div v-bind:class="classObject"></div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: "#app",-->
+<!--        data: {-->
+<!--            classObject: {-->
+<!--                active: true,-->
+<!--                'text-danger': true-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <div v-bind:class="classObject"></div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: "#app",-->
+<!--        data: {-->
+<!--            isActive: true,-->
+<!--            errer: {-->
+<!--                value: true,-->
+<!--                type: 'fatal'-->
+<!--            }-->
+<!--        },-->
+<!--        computed:{-->
+<!--            classObject:function () {-->
+<!--                return{-->
+<!--                    base: true,-->
+<!--                    active: this.isActive && !this.errer.value,-->
+<!--                    'text-danger':this.error.value &&this.error.type ==='fatal'-->
+<!--                }-->
+
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <div v-bind:style="{color:activeColor,fontSize:fontSize +'px'}">菜鸟教程</div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            activeColor: 'green',-->
+<!--            fontSize: 30-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--&lt;!&ndash;    greet 是在下面定义的方法名&ndash;&gt;-->
+<!--    <button v-on:click="greet">Greet</button>-->
+<!--</div>-->
+<!--<script>-->
+<!--    var app = new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            name: 'Vue.js'-->
+<!--        },-->
+<!--        // 在 `methods` 对象中定义方法-->
+<!--        methods: {-->
+<!--            greet: function (event) {-->
+<!--                // `this` 在方法里指当前 Vue 实例-->
+<!--                alert('Hello ' + this.name + '!')-->
+<!--                // `event` 是原生 DOM 事件-->
+<!--                if (event) {-->
+<!--                    alert(event.target.tagName)-->
+<!--                }-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--    // 也可以用 JavaScript 直接调用方法-->
+<!--    app.greet() // -> 'Hello Vue.js!'-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    <button v-on:click="say('hi')">say hi</button>-->
+<!--    <button v-on:click="say('what')">Say what</button>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        methods: {-->
+<!--            say: function (message) {-->
+<!--                alert(message)-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <p>input 元素:</p>-->
+<!--    <input v-model="message" placeholder="编辑我.....">-->
+<!--    <p>消息是:{{message}}</p>-->
+
+
+<!--    <p>textarea 元素:</p>-->
+<!--    <p style="white-space: pre">{{message2}}</p>-->
+<!--    <textarea v-model="message2" placeholder="多行文本输入...."></textarea>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:"#app",-->
+<!--        data:{-->
+<!--            message:'Runoob',-->
+<!--            message2:'菜鸟教程'-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <p>单个复选框</p>-->
+<!--    <input type="checkbox" id="checkbox" v-model="checked">-->
+<!--    <label for="checkbox">{{checked}}</label>-->
+
+<!--    <p>多个复选框</p>-->
+<!--    <input type="checkbox" id="runoob" value="Runoob" v-model="checkedNames">-->
+<!--    <label for="runoob">Runoob</label>-->
+<!--    <input type="checkbox" id="google" value="Google" v-model="checkedNames">-->
+<!--    <label for="google">Goole</label>-->
+<!--    <input type="checkbox" id="taobao" value="Taobao" v-model="checkedNames">-->
+<!--    <label for="taobao">taobao</label>-->
+<!--    <br>-->
+<!--    <span>选择得值为:{{checkedNames}}</span>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        data:{-->
+<!--            checked:false,-->
+<!--            checkedNames:[]-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <input type="radio" id="runoob" value="Runoob" v-model="picked">-->
+<!--    <label for="runoob">Runoob</label>-->
+<!--    <br>-->
+<!--    <input type="radio" id="google" value="Google" v-model="picked">-->
+<!--    <label for="google">Goole</label>-->
+<!--    <br>-->
+<!--    <span>选中值为:{{picked}}</span>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        data:{-->
+<!--            picked:"Runoob"-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <select v-model="selected" name="fruit">-->
+<!--        <option value="">请选择一个网站</option>-->
+<!--        <option value="www.runoob.com">Runoob</option>-->
+<!--        <option value="www.google.com">Google</option>-->
+<!--    </select>-->
+
+<!--    <div id="output">-->
+<!--        选择的网站是:{{selected}}-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        data:{-->
+<!--            selected:''-->
+<!--        }-->
+<!--    </script>})-->
+
+<!--<div id="app">-->
+<!--    <runoob></runoob>-->
+<!--</div>-->
+<!--<script>-->
+<!--    //注册-->
+<!--    Vue.component('runoob',{-->
+<!--        template:'<h1>自定义组件!</h1>'-->
+<!--    })-->
+<!--    //创建根实例-->
+<!--    new Vue({-->
+<!--        el:'#app'-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <runoob></runoob>-->
+<!--</div>-->
+<!--<script>-->
+<!--    var ChiId = {-->
+<!--        template:'<h1>自定义组件!</h1>'-->
+<!--    }-->
+<!--    //创建根实例-->
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        components:{-->
+<!--            //runoob 将只在父模板可用-->
+<!--            'runoob':ChiId-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    <chiId message="hello!"></chiId>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    //注册-->
+<!--    Vue.component('chiId',{-->
+<!--        //声明 props-->
+<!--        props:['message'],-->
+<!--        //-->
+<!--        template:'<span>{{message}}</span>'-->
+<!--    })-->
+<!--    new Vue({-->
+<!--        el:'#app'-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--    <div>-->
+<!--        <input v-model="patentMsg">-->
+<!--        <br>-->
+<!--        <chiId v-bind:message="patentMsg"></chiId>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    Vue.component('chiId',{-->
+<!--        props:['message'],-->
+<!--        template:'<span>{{message}}</span>'-->
+<!--    })-->
+
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        data:{-->
+<!--            patentMsg:'父组件内容'-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--<div id="app">-->
+<!--   <ol>-->
+<!--       <todo-item v-for="item in sites" v-bind:todo="item"></todo-item>-->
+<!--   </ol>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    Vue.component('todo-item',{-->
+<!--        props:['todo'],-->
+<!--        template:'<li>{{todo.text}}</li>'-->
+<!--    })-->
+
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        data:{-->
+<!--            sites:[-->
+<!--                {text:'Runoob'},-->
+<!--                {text:'Google'},-->
+<!--                {text:'Taobao'}-->
+<!--            ]-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <p>页面载入时,input元素自动获取焦点</p>-->
+<!--    <input v-focus>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    //注册一个全局自定义指令v-focus-->
+<!--    Vue.directive('focus',{-->
+<!--        inserted:function (el) {-->
+<!--            //聚焦元素-->
+<!--            el.focus()-->
+<!--        }-->
+<!--    })-->
+<!--    //创建根实例-->
+<!--    new Vue({-->
+<!--        el:'#app'-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <p>页面载入时,input元素自动获取焦点</p>-->
+<!--    <input v-focus>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        directives:{-->
+<!--            focus:{-->
+<!--                inserted: function (el) {-->
+<!--                    el.focus()-->
+<!--                }-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app" v-runoob:hello.a.b="message">-->
+<!--</div>-->
+<!--<script>-->
+<!--    Vue.directive('runoob', {-->
+<!--        bind: function (el, binding, vnode) {-->
+<!--            var s = JSON.stringify-->
+<!--            el.innerHTML =-->
+<!--                'name: ' + s(binding.name) + '<br>' +-->
+<!--                'value: ' + s(binding.value) + '<br>' +-->
+<!--                'expression: ' + s(binding.expression) + '<br>' +-->
+<!--                'argument: ' + s(binding.arg) + '<br>' +-->
+<!--                'modifiers: ' + s(binding.modifiers) + '<br>' +-->
+<!--                'vnode keys: ' + Object.keys(vnode).join(', ')-->
+<!--        }-->
+<!--    })-->
+
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            message: "才能"-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--   <div v-runoob="{color:'green',text:'菜鸟教程'}"></div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    Vue.directive('runoob',function (el,binding) {-->
+<!--        //简写方式设置文本及背景颜色-->
+<!--        el.innerHTML = binding.value.text-->
+<!--        el.style.backgroundColor = binding.value.color-->
+<!--    })-->
+<!--    new Vue({-->
+<!--        el:'#app'-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    <h1>Hello App!</h1>-->
+<!--    <p>-->
+<!--        &lt;!&ndash;        使用router-link组件来导航&ndash;&gt;-->
+<!--        &lt;!&ndash;        通过传入 to 属性指定链接&ndash;&gt;-->
+<!--        &lt;!&ndash;        <router-link> 默认会被渲染成一个 <a> 标签&ndash;&gt;-->
+<!--        <router-link to="/foo">GO to Foo</router-link>-->
+<!--        <router-link to="/bar">GO to Foo</router-link>-->
+<!--    </p>-->
+<!--    &lt;!&ndash;    路由出口&ndash;&gt;-->
+<!--    &lt;!&ndash;    路由匹配到的组件将渲染在这里&ndash;&gt;-->
+<!--    <router-view></router-view>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    //0如果使用模块化机制编程,请输入vue和vuerouter,要调用vue.use(vuerouter)-->
+<!--    //1定义(路由)组件-->
+<!--    //可以从其他文件 import进来-->
+<!--    const Foo = {template: '<div>foo</div>'}-->
+<!--    const Bar = {template: '<div>bar</div>'}-->
+
+<!--    //2定义路由-->
+<!--    //每个路由都映射一个组件,其中component-->
+<!--    const router = [-->
+<!--        {path: '/foo', component: Foo},-->
+<!--        {path: '/bar', component: Bar}-->
+<!--    ]-->
+<!--    //3-->
+<!--    const router = new VueRouter({-->
+<!--        router//-->
+<!--    })-->
+<!--    //4创建和挂载根实例-->
+<!--    const app = new Vue({-->
+<!--        router-->
+<!--    }).$mount('#app')-->
+<!--</script>-->
+
+<!--<div id="databinding">-->
+<!--    <button v-on:click="show = !show">点我</button>-->
+<!--    <transition name="fade">-->
+<!--        <p v-show="show" v-bind:style="styleobj">动画实例</p>-->
+<!--    </transition>-->
+<!--</div>-->
+
+<!--<script type="text/javascript">-->
+<!--    var vm = new Vue({-->
+<!--        el: '#databinding',-->
+<!--        data: {-->
+<!--            show: true,-->
+<!--            styleobj: {-->
+<!--                fontSize: '30px',-->
+<!--                color: 'red'-->
+<!--            }-->
+<!--        },-->
+<!--        methods:{-->
+
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+<div id="databinding">
+    <button v-on:click="show !=show">点我</button>
+</div>
+<transition v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+v-on:leave="leave"
+v-bind:css="false">
+    <p v-if="show">
+        彩泥教程---学的不仅是技术,更是梦想!!!
+    </p>
+</transition>
+<script type="text/javascript">
+    new Vue({
+        el:'#databinding',
+        data:{
+            show:false
+        },
+        methods:{
+            beforeEnter:function (el) {
+                el:style.opacity = 0
+                el.style.transformOrigin = 'left'
+            },
+            enter:function (el, done) {
+                Velocity(el,{opacity:1,fontSize:'1.4em'},{duration:300})
+                Velocity(el,{fontSize: 'lem'},{cpmplete:done})
+            },
+            leave:function (el,done) {
+                Velocity(el,{opacity:1,translateX:'15px',rotateZ:'50deg'},{duration:600})
+                Velocity(el,{rotateZ:'100deg'},{loop:2})
+                Velocity(el,{
+                    rotateZ:'45deg',
+                    translateY:'30px',
+                    translateX:'30px',
+                    opacity:0
+                },{cpmplete: done})
+            }
+        }
+    })
+</script>
+</body>
+</html>

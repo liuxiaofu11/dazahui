@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:b-on="http://www.w3.org/1999/xhtml" xmlns:v-runoob="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue实例</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<!--<div id="app">-->
+<!--    <h1>网站列表</h1>-->
+<!--    <div  v-for="site in info">-->
+<!--        {{site.name}}-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script type = "text/javascript">-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data () {-->
+<!--            return {-->
+<!--                info: null-->
+<!--            }-->
+<!--        },-->
+<!--        mounted () {-->
+<!--            axios-->
+<!--                .get('https://www.runoob.com/try/ajax/json_demo.json')-->
+<!--                .then(response => (this.info = response))-->
+<!--                .catch(function (error) { // 请求失败处理-->
+<!--                    console.log(error);-->
+<!--                });-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="app">-->
+<!--    {{info}}-->
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data() {-->
+<!--            return {-->
+<!--                info: null-->
+<!--            }-->
+<!--        },-->
+<!--        mounted() {-->
+<!--            axios-->
+<!--                .post('https://www.runoob.com/try/ajax/demo_axios_post.php')-->
+<!--                .then(response => (this.info = response))-->
+<!--                .catch(function (error) { //请求失败处理-->
+<!--                    console.log(error);-->
+<!--                })-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--<div id="box">-->
+<!--    <input type="button" @click="get()" value="点我异步获取数据(get)">-->
+<!--</div>-->
+
+<!--<script type="text/javascript">-->
+<!--    window.onload = function () {-->
+<!--     var vm = new Vue({-->
+<!--         el:'#box',-->
+<!--         data:{-->
+<!--             msg:'Hello World!',-->
+<!--         },-->
+<!--         methods:{-->
+<!--             get:function () {-->
+<!--                 //发送get请求-->
+<!--                 this.$http.get('/try/ajax/ajax_info.txt').then(function (res) {-->
+<!--                     document.write(res.body);-->
+<!--                 },function () {-->
+<!--                         console.log("请求失败处理");-->
+<!--                     });-->
+<!--             }-->
+<!--         }-->
+<!--     });-->
+<!--    }-->
+<!--</script>-->
+
+
+<!--<div id="box">-->
+<!--    <input type="button" @click="post()" value="点我异步获取数据(post)">-->
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--    window.onload= function () {-->
+<!--        var vm = new Vue({-->
+<!--            el:'#box',-->
+<!--            data:{-->
+<!--                msg:'Hello World!',-->
+<!--            },-->
+<!--            methods:{-->
+<!--                post:function () {-->
+<!--                    //发送post请求-->
+<!--                    this.$http.post('/try/ajax/demo_test_post.php',{name:"菜鸟教程",url:"http://www.runoob.com"},{emulateJSON:true}).then(function (res) {-->
+<!--                        document.write(res.body);-->
+<!--                    },function (res) {-->
+<!--                        console.log(res.status)-->
+<!--                        });-->
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
+
+<div id = "app">
+    <p style = "font-size:25px;">计数器: {{ counter }}</p>
+    <button @click = "counter++" style = "font-size:25px;">点我</button>
+</div>
+<script type = "text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            counter: 1
+        }
+    });
+    vm.$watch('counter', function(nval, oval) {
+        alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+    });
+    setTimeout(
+        function(){
+            vm.counter += 20;
+        },10000
+    );
+</script>
+</body>
+</html>
