@@ -1,5 +1,9 @@
 package com.tengda.dazahui.system.controller;
 
+import jdk.internal.util.xml.impl.Input;
+
+import java.io.*;
+
 /**
  * @Author teswell
  * @Date 2020/11/17 17:59
@@ -44,9 +48,40 @@ public class TestController {
         double result = Math.round(cal * 10000d) / 10000d;
         return result;
     }
+//    public static void main(String[] args) {
+//        double distance = getDistance(39.947468, 116.547423, 39.947480, 116.547440);
+//        System.out.println(distance);
+//    }
+
     public static void main(String[] args) {
-        double distance = getDistance(39.947468, 116.547423, 39.947480, 116.547440);
-        System.out.println(distance);
+//        StringBuffer stringBuffer = new StringBuffer();
+//        stringBuffer.append("abcdefg");
+//        System.out.println(stringBuffer.reverse());
+
+        File  file = new File("");
+        InputStream is = null;
+        try {
+            is = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        byte[] b =new byte[1024];
+        int a = 0;
+        try {
+            a = is.read(b);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String[] str = new String(b,0,a).split("");
+        int count = 0;
+        for (int i = 0; i <str.length ; i++) {
+       //设置查询统计的字符窜为a
+            if ("a".equals(str[i])) {
+                count++;
+            }
+        }
+        System.out.println(count);
     }
 
 }
