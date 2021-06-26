@@ -18,6 +18,8 @@ public class Test1Controller {
         personList.add(p2);
         personList.add(p3);
         personList.add(p4);
+
+
         //先分组
         Map<String, List<Person>> map = personList.stream()
                 .collect(Collectors.groupingBy(Person::getName));
