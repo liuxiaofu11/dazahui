@@ -3,11 +3,6 @@ package com.tengda.dazahui.system.controller;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @Author teswell
- * @Date 2021/1/25 9:32
- * @function
- */
 public class GongJuController {
 
 
