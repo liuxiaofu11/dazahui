@@ -10,6 +10,7 @@ public class DazahuiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DazahuiApplication.class, args);
+
         System.out.println("大杂烩项目启动成功");
     }
 
